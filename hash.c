@@ -5,28 +5,21 @@
 #include <malloc.h>
 
 void
-hash_append( struct hash* hashHead,
-             uint32_t key,
-             char* val, uint32_t valLen ) {
-  struct hash* new_element = malloc( sizeof(struct hash) ) ;
-  struct hash* cur = hashHead ;
-  if( NULL == val || 0 == valLen ) {
+hash_append( struct hash** hashHead,
+             struct hash* elem ) {
+  struct hash* cur = *hashHead ;
+  if( NULL == elem || NULL == hashHead ) {
     return ;
   }
   //
-  new_element->key = key ;
-  strncpy( new_element->val, val, valLen ) ;
-  new_element->valLen = valLen ;
-  new_element->next = NULL ;
-  //
-  if( NULL == hashHead ) {      // Create new hash
-    hashHead = new_element ;
+  if( NULL == cur ) {      // Create new hash
+    *hashHead = elem ;
   } else {                      // Append to end of existing hash
     while( NULL != cur->next ) {
       cur = cur->next ;
     }
     //
-    cur->next = new_element ;
+    cur->next = elem ;
   }
 }
 
@@ -37,7 +30,7 @@ hash_find_by_key( struct hash* hashHead, uint32_t key ) {
     return NULL ;
   }
   //
-  while( NULL != cur->next ) {
+  while( NULL != cur ) {
     if( key == cur->key ) {
       return cur ;
     }

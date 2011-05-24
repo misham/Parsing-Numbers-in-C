@@ -1,3 +1,8 @@
+#ifndef CONVERT_NUMBER_H__
+#define CONVERT_NUMBER_H__
+
+#include "hash.h"
+
 #include <stdint.h>
 
 #ifndef SUCCESS
@@ -43,50 +48,12 @@ struct numberRepresentation {
  * Convert number to string representation.  For example, 128 will yield
  * onehundredtwentyeight
  *
- * @param[in] numToConvert Number to convert to string
- * @param[in] lookUpTable Look up table containing strings
- * @param[in] lookUpTableLen Length of the lookUpTable
- * @param[out] convertedNumber String containing converted number
- * @param[out] convertedNumberLen Length of the converted number string
- *
- * @note
- * The format of the look-up table is an array with digits and their
- * numerical values.  Example:
- *
- * [0] => "zero"
- * [1] => "one"
- * ...
- * [10] => "ten"
- * [20] => "twenty"
- * ...
- * [100] => "hundred"
- * [1000] => "thousand"
- * [1000000] => "million"
- * ...
- *
- * @return SUCCESS if number was converted, FAILURE otherwise.
+* @return SUCCESS if number was converted, FAILURE otherwise.
  */
-int
+char*
 convert_number_to_string( uint32_t numToConvert,
-                          char* lookUpTable[],
-                          uint32_t lookUpTableLen,
-                          char** convertedNumber,
-                          uint32_t* convertedNumberLen ) ;
+                          uint32_t mod,
+                          struct hash* lookUpTable ) ;
 
-/**
- * Break down the number into it's parts.
- *
- * @param[in] number Number to break down
- * @param[in] position Which decimal position to look at.
- *                     For first time, call with largest magnitude of the number.
- * @param[out] numberRepresentation Struct to store broken down number in.
- *
- */
-int
-break_down_number( uint32_t number,
-                   uint32_t position,
-                   char* lookUpTable[],
-                   uint32_t lookUpTableLen,
-                   char* convertedNumber,
-                   uint32_t* convertedNumberLen ) ;
+#endif
 

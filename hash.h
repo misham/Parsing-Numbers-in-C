@@ -1,3 +1,6 @@
+#ifndef HASH_H__
+#define HASH_H__
+
 #include <stdint.h>
 
 struct hash {
@@ -12,14 +15,11 @@ struct hash {
  * Appends a new element to the hash
  *
  * @param[in] hashHead First element of the hash to append to
- * @param[in] key Key to use for the hash
- * @param[in] val Value to insert for the key
- * @param[in] valLen Length of the value
+ * @param[in] elem Element to append
  */
 void
-hash_append( struct hash* hashHead,
-             uint32_t key,
-             char* val, uint32_t valLen ) ;
+hash_append( struct hash** hashHead,
+             struct hash* elem ) ;
 
 /**
  * Finds the hash value given a key
@@ -32,4 +32,6 @@ hash_append( struct hash* hashHead,
  */
 struct hash*
 hash_find_by_key( struct hash* hashHead, uint32_t key ) ;
+
+#endif
 
