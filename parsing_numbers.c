@@ -37,13 +37,8 @@ main( int argc, char* argv[] ) {
     }
   }
 	//
-	result = convert_number_to_string( number_to_convert, look_up_table, 100 ) ;
+	result = NULL ; //convert_number_to_string( number_to_convert, look_up_table, 100 ) ;
 	printf( "Result: %s\n", result ) ;
-	//
-	// Clean Up
-	//
-	free( look_up_table ) ;
-	free( result ) ;
 	//
 	return EXIT_SUCCESS ;
 }
