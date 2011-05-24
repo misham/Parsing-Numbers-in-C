@@ -67,16 +67,15 @@ struct numberRepresentation {
  * @return SUCCESS if number was converted, FAILURE otherwise.
  */
 int
-break_down_number( uint32_t number,
-                   uint32_t position,
-                   char* lookUpTable[],
-                   uint32_t lookUpTableLen,
-                   char* convertedNumber,
-                   uint32_t* convertedNumberLen ) ;
+convert_number_to_string( uint32_t numToConvert,
+                          char* lookUpTable[],
+                          uint32_t lookUpTableLen,
+                          char** convertedNumber,
+                          uint32_t* convertedNumberLen ) ;
 
 /**
  * Break down the number into it's parts.
- * 
+ *
  * @param[in] number Number to break down
  * @param[in] position Which decimal position to look at.
  *                     For first time, call with largest magnitude of the number.
@@ -86,6 +85,8 @@ break_down_number( uint32_t number,
 int
 break_down_number( uint32_t number,
                    uint32_t position,
+                   char* lookUpTable[],
+                   uint32_t lookUpTableLen,
                    char* convertedNumber,
                    uint32_t* convertedNumberLen ) ;
 
