@@ -22,19 +22,19 @@ main( int argc, char* argv[] ) {
 	//
   number_to_convert = 7 ;
   result = convert_number_to_string( number_to_convert,
-                                     10,
+                                     0,
                                      look_up_table ) ;
   printf( "%d -> %s\n", number_to_convert, result ) ;
   //
   number_to_convert = 20 ;
   result = convert_number_to_string( number_to_convert,
-                                     100,
+                                     0,
                                      look_up_table ) ;
   printf( "%d -> %s\n", number_to_convert, result ) ;
   //
   number_to_convert = 127 ;
   result = convert_number_to_string( number_to_convert,
-                                     1000,
+                                     0,
                                      look_up_table ) ;
   printf( "%d -> %s\n", number_to_convert, result ) ;
 	//

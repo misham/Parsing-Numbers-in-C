@@ -17,12 +17,37 @@ get_factor( uint32_t num, uint32_t mod ) {
   return num / mod ;
 }
 
+uint32_t
+get_starting_modulo( uint32_t num ) {
+  if( num > BILLION ) {
+    return BILLION ;
+  }
+  else if( num > MILLION ) {
+    return MILLION ;
+  }
+  else if( num > THOUSAND ) {
+    return THOUSAND ;
+  }
+  else if( num > HUNDRED ) {
+    return HUNDRED ;
+  }
+  else {
+    return TEN ;
+  }
+}
+
 char*
 convert_number_to_string( uint32_t numToConvert,
-                          uint32_t mod,
+                          uint32_t modulo,
                           struct hash* lookUpTable ) {
+  uint32_t mod = modulo ;
   if( NULL == lookUpTable ) {
     return NULL ;
+  }
+  //
+  if( 0 == mod ) {
+    mod = get_starting_modulo( numToConvert ) ;
+    printf( "mod -> %d\n", mod ) ;
   }
   //
   // Check if value is defined in look-up table already

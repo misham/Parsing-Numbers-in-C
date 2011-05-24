@@ -15,13 +15,11 @@
 
 #define MAX_STRING_SIZE 256
 
-enum factors {
-  TEN = 10,
-  HUNDRED = 100,
-  THOUSAND = 1000,
-  MILLION = 1000000,
-  BILLION = 1000000000
-} ;
+#define TEN       10
+#define HUNDRED   100
+#define THOUSAND  1000
+#define MILLION   1000000
+#define BILLION   1000000000
 
 enum numTypes {
   BILLIONS,
@@ -48,12 +46,12 @@ struct numberRepresentation {
  * Convert number to string representation.  For example, 128 will yield
  * onehundredtwentyeight
  *
-* @return SUCCESS if number was converted, FAILURE otherwise.
+ * @return SUCCESS if number was converted, FAILURE otherwise.
  */
 char*
 convert_number_to_string( uint32_t numToConvert,
-                          uint32_t mod,
-                          struct hash* lookUpTable ) ;
+    uint32_t modulo,
+    struct hash* lookUpTable ) ;
 
 #endif
 
