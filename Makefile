@@ -2,7 +2,7 @@
 DEBUG = -g
 
 CC = gcc
-CFLAGS = -Wall $(DEBUG) -I.
+CFLAGS = -Wall -Wextra $(DEBUG) -I.
 
 SRC = parsing_numbers.c \
 			convert_number.c \

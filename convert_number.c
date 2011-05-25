@@ -79,7 +79,7 @@ convert_number_to_string( uint32_t numToConvert,
 		//
 		// Get next portion of the number
 		//
-		char* tmp = convert_number_to_string( remainder, (mod/10), lookUpTable ) ;
+		char* tmp = convert_number_to_string( remainder, lookUpTable, (mod/10) ) ;
 		//
 		// Store all parts
 		//
