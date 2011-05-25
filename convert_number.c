@@ -5,13 +5,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// :TODO: Deal with 10,000 100,000,000 etc.
-uint32_t
-get_modulo( uint32_t mod ) {
-  return mod / 10 ;
-}
 
-// factor of the current mod - 4->40, 2->2000, 8->30000, etc.
+// factor of the current mod - 4->40, 2->2000, 80->80000, etc.
 uint32_t
 get_factor( uint32_t num, uint32_t mod ) {
   return num / mod ;
@@ -19,13 +14,7 @@ get_factor( uint32_t num, uint32_t mod ) {
 
 uint32_t
 get_starting_modulo( uint32_t num ) {
-  if( num > BILLION ) {
-    return BILLION ;
-  }
-  else if( num > MILLION ) {
-    return MILLION ;
-  }
-  else if( num > THOUSAND ) {
+  if( num > THOUSAND ) {
     return THOUSAND ;
   }
   else if( num > HUNDRED ) {
@@ -65,36 +54,44 @@ convert_number_to_string( uint32_t numToConvert,
   }
   else {
     //
+		uint32_t cur_num_string_len = 0 ;
+		char* cur_num_string = NULL ;
     uint32_t remainder = numToConvert % mod ;
     //
     // Figure out current largest value
     //
-    uint32_t left_over = numToConvert - remainder ;
-    struct hash* factor = hash_find_by_key( lookUpTable, get_factor( left_over, mod ) ) ;
-    struct hash* mod_hash = hash_find_by_key( lookUpTable, mod ) ;
-    //
-    // Convert largest value into string
-    //
-    uint32_t cur_num_string_len = factor->valLen + mod_hash->valLen ;
-    char* cur_num_string = malloc( sizeof(char) * cur_num_string_len ) ;
-    strncpy( cur_num_string, factor->val, factor->valLen ) ;
-    strncat( cur_num_string, mod_hash->val, mod_hash->valLen ) ;
-    //
-    // Get next portion of the number
-    //
-    uint32_t new_mod = get_modulo( mod ) ;
-    char* tmp = convert_number_to_string( remainder, new_mod, lookUpTable ) ;
-    //
-    // Store all parts
-    //
-    char* return_val = malloc( sizeof(char) * (cur_num_string_len + strlen(tmp) + 1) ) ;
-    strncpy( return_val, cur_num_string, cur_num_string_len ) ;
-    strncat( return_val, tmp, strlen(tmp) ) ;
-    //
-    free( cur_num_string ) ;
-    free( tmp ) ;
-    //
-    return return_val ;
-  }
+		struct hash* left_over = hash_find_by_key( lookUpTable, (numToConvert - remainder) ) ;
+		if( NULL != left_over ) { // deal with things like 23 != two ten three
+			cur_num_string_len = left_over->valLen ;
+			cur_num_string = malloc( sizeof(char) * cur_num_string_len ) ;
+			strncpy( cur_num_string, left_over->val, cur_num_string_len ) ;
+		}
+		else {
+			struct hash* factor = hash_find_by_key( lookUpTable, get_factor( (numToConvert-remainder), mod ) ) ;
+			struct hash* mod_hash = hash_find_by_key( lookUpTable, mod ) ;
+			//
+			// Convert largest value into string
+			//
+			cur_num_string_len = factor->valLen + mod_hash->valLen ;
+			cur_num_string = malloc( sizeof(char) * cur_num_string_len ) ;
+			strncpy( cur_num_string, factor->val, factor->valLen ) ;
+			strncat( cur_num_string, mod_hash->val, mod_hash->valLen ) ;
+		}
+		//
+		// Get next portion of the number
+		//
+		char* tmp = convert_number_to_string( remainder, (mod/10), lookUpTable ) ;
+		//
+		// Store all parts
+		//
+		char* return_val = malloc( sizeof(char) * (cur_num_string_len + strlen(tmp) + 1) ) ;
+		strncpy( return_val, cur_num_string, cur_num_string_len ) ;
+		strncat( return_val, tmp, strlen(tmp) ) ;
+		//
+		free( cur_num_string ) ;
+		free( tmp ) ;
+		//
+		return return_val ;
+	}
 }
 
