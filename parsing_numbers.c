@@ -18,8 +18,8 @@ main( int argc, char* argv[] ) {
 	//
   number_to_convert = 7 ;
   result = convert_number_to_string( number_to_convert,
-                                     0,
-                                     look_up_table ) ;
+                                     look_up_table,
+																		 0 ) ;
 	if( 0 == strncmp(result, "seven", strlen("seven")) ) {
 		printf( "Pass\t" ) ;
 	} else {
@@ -29,8 +29,8 @@ main( int argc, char* argv[] ) {
   //
   number_to_convert = 20 ;
   result = convert_number_to_string( number_to_convert,
-                                     0,
-                                     look_up_table ) ;
+                                     look_up_table,
+																		 0 ) ;
 	if( 0 == strncmp(result, "twenty", strlen("twenty")) ) {
 		printf( "Pass\t" ) ;
 	} else {
@@ -40,8 +40,8 @@ main( int argc, char* argv[] ) {
   //
   number_to_convert = 127 ;
   result = convert_number_to_string( number_to_convert,
-                                     0,
-                                     look_up_table ) ;
+                                     look_up_table,
+																		 0 ) ;
 	if( 0 == strncmp(result, "onehundredtwentyseven", strlen("onehundredtwentyseven")) ) {
 		printf( "Pass\t" ) ;
 	} else {
@@ -51,8 +51,8 @@ main( int argc, char* argv[] ) {
 	//
 	number_to_convert = 12456 ;
   result = convert_number_to_string( number_to_convert,
-                                     0,
-                                     look_up_table ) ;
+                                     look_up_table,
+																		 0 ) ;
 	if( 0 == strncmp(result, "twelvethousandfourhundredfiftysix", strlen("twelvethousandfourhundredfiftysix")) ) {
 		printf( "Pass\t" ) ;
 	} else {

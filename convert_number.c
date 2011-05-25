@@ -27,8 +27,8 @@ get_starting_modulo( uint32_t num ) {
 
 char*
 convert_number_to_string( uint32_t numToConvert,
-                          uint32_t modulo,
-                          struct hash* lookUpTable ) {
+                          struct hash* lookUpTable,
+                          uint32_t modulo ) {
   uint32_t mod = modulo ;
   if( NULL == lookUpTable ) {
     return NULL ;

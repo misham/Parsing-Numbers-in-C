@@ -37,9 +37,7 @@ enum numTypes {
  * @param modulo Used internally for recursion. Should be passed in as 0
  */
 char*
-convert_number_to_string( uint32_t numToConvert,
-    uint32_t modulo,
-    struct hash* lookUpTable ) ;
+convert_number_to_string( uint32_t numToConvert, struct hash* lookUpTable, uint32_t modulo ) ;
 
 #endif
 
