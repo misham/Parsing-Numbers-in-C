@@ -32,6 +32,9 @@ enum numTypes {
  * Convert number to string representation.  For example, 128 will yield
  * onehundredtwentyeight
  *
+ * @param[in] numToConvert 32-bit integer to convert to string
+ * @param[in] lookUpTable Look-up table to use for string conversion
+ * @param modulo Used internally for recursion. Should be passed in as 0
  */
 char*
 convert_number_to_string( uint32_t numToConvert,

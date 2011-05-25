@@ -1,3 +1,4 @@
+#include "parsing_numbers.h"
 #include "convert_number.h"
 #include "hash.h"
 
@@ -5,11 +6,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-void
-populate_lookup_table( struct hash** lookUpTable ) ;
-void
-print_hash( struct hash* lookUpTable ) ;
 
 int
 main( int argc, char* argv[] ) {
@@ -24,24 +20,44 @@ main( int argc, char* argv[] ) {
   result = convert_number_to_string( number_to_convert,
                                      0,
                                      look_up_table ) ;
+	if( 0 == strncmp(result, "seven", strlen("seven")) ) {
+		printf( "Pass\t" ) ;
+	} else {
+		printf( "Fails\t" ) ;
+	}
   printf( "%d -> %s\n", number_to_convert, result ) ;
   //
   number_to_convert = 20 ;
   result = convert_number_to_string( number_to_convert,
                                      0,
                                      look_up_table ) ;
+	if( 0 == strncmp(result, "twenty", strlen("twenty")) ) {
+		printf( "Pass\t" ) ;
+	} else {
+		printf( "Fails\t" ) ;
+	}
   printf( "%d -> %s\n", number_to_convert, result ) ;
   //
   number_to_convert = 127 ;
   result = convert_number_to_string( number_to_convert,
                                      0,
                                      look_up_table ) ;
+	if( 0 == strncmp(result, "onehundredtwentyseven", strlen("onehundredtwentyseven")) ) {
+		printf( "Pass\t" ) ;
+	} else {
+		printf( "Fails\t" ) ;
+	}
   printf( "%d -> %s\n", number_to_convert, result ) ;
 	//
 	number_to_convert = 12456 ;
   result = convert_number_to_string( number_to_convert,
                                      0,
                                      look_up_table ) ;
+	if( 0 == strncmp(result, "twelvethousandfourhundredfiftysix", strlen("twelvethousandfourhundredfiftysix")) ) {
+		printf( "Pass\t" ) ;
+	} else {
+		printf( "Fails\t" ) ;
+	}
   printf( "%d -> %s\n", number_to_convert, result ) ;
 	//
 	return EXIT_SUCCESS ;

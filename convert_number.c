@@ -36,7 +36,6 @@ convert_number_to_string( uint32_t numToConvert,
   //
   if( 0 == mod ) {
     mod = get_starting_modulo( numToConvert ) ;
-    printf( "mod -> %d\n", mod ) ;
   }
   //
   // Check if value is defined in look-up table already

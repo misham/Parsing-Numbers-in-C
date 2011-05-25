@@ -26,9 +26,8 @@ hash_append( struct hash** hashHead,
  *
  * @param[in] hashHead First element of the hash to append to
  * @param[in] key Key to find
- * @param[in] keyLen Length of the key to find
  *
- * @return Hash element identified by the key or NULL
+ * @return Hash element identified by the key or NULL if none found
  */
 struct hash*
 hash_find_by_key( struct hash* hashHead, uint32_t key ) ;

@@ -2,5 +2,18 @@ This program is in response to:
 
 http://forr.st/~DJb
 
-It will compute the textual representation of a number given
-a number and a lookup table.
+It will compute the textual representation of a 32-bit unsigned number given
+the number and a lookup table.
+
+There are 4 tests run in main():
+  * 7 => seven
+	* 20 => twenty
+	* 127 => onehundredtwentyseven
+	* 12453 => twelvethousandfourhundredfiftythree
+
+The key is a (completely) basic implementation of a hash.  The hash is a
+rudimentary linked-list with append and find-by-key functions.  It is
+__not__ optimized for __anything__.
+
+To build run _make_
+
