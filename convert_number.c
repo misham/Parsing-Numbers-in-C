@@ -60,8 +60,8 @@ convert_number_to_string( uint32_t numToConvert,
     //
     // Figure out current largest value
     //
-		struct hash* left_over = hash_find_by_key( lookUpTable, (numToConvert - remainder) ) ;
-		if( NULL != left_over ) { // deal with things like 23 != two ten three
+		if( numToConvert < 100 ) { // 23 != two ten three
+			struct hash* left_over = hash_find_by_key( lookUpTable, (numToConvert - remainder) ) ;
 			cur_num_string_len = left_over->valLen ;
 			cur_num_string = malloc( sizeof(char) * cur_num_string_len ) ;
 			strncpy( cur_num_string, left_over->val, cur_num_string_len ) ;

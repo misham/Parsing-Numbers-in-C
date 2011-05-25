@@ -38,6 +38,12 @@ main( int argc, char* argv[] ) {
                                      look_up_table ) ;
   printf( "%d -> %s\n", number_to_convert, result ) ;
 	//
+	number_to_convert = 12456 ;
+  result = convert_number_to_string( number_to_convert,
+                                     0,
+                                     look_up_table ) ;
+  printf( "%d -> %s\n", number_to_convert, result ) ;
+	//
 	return EXIT_SUCCESS ;
 }
 
